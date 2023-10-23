@@ -1,4 +1,4 @@
-name: Depoly html page to fast-fire server
+name: Depoly html page to sysu-star server
 on:
   push:
     branches:
