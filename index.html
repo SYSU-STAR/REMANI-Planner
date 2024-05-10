@@ -1,138 +1,334 @@
-<!-- Template: https://github.com/nerfies/nerfies.github.io -->
-<!-- Author: LiuQi, contact: 17729920326 -->
-<!-- Latest update time: 2023/06/27 -->
-<!-- Way to find CSS using: view index.html in browser and press F12 -->
 
 <!DOCTYPE html>
-<html>
-<!-- web head -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real-time Whole-body Motion Planning for Mobile Manipulators Using Environment-adaptive Search and Spatial-temporal Optimization</title>
+    <link rel="icon" type="image/x-icon" href="./static/assets/imgs/manipulator.png">
+    <!-- Bootstrap -->
+    <link href="./static/css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="./static/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+    <script src="js/google-code-prettify/prettify.js"></script> -->
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="Real-time Whole-body Motion Planning for Mobile Manipulators Using Environment-adaptive Search and Spatial-temporal Optimization">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Real-time Whole-body Motion Planning for Mobile Manipulators Using Environment-adaptive Search and Spatial-temporal Optimization</title>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2>Real-time Whole-body Motion Planning for Mobile Manipulators Using Environment-adaptive Search and Spatial-temporal Optimization</h2>
+            <h5 style="color:#5a6268;">IEEE International Conference on Robotics and Automation (<strong>ICRA</strong>), 2024.</h5>
+            <hr>
+            <h6 style="line-height: 26px;">
+              <a href="https://chengkaiwu.me/" target="_blank">Chengkai Wu </a><sup>1,2,*</sup>,
+              <a href="http://sysu-star.com/people/" target="_blank">Ruilin Wang</a><sup>1,*</sup>,
+              <a href="http://sysu-star.com/people/" target="_blank">Mianzhi Song</a><sup>1</sup>,
+              <a href="http://zju-fast.com/fei-gao/" target="_blank">Fei Gao</a><sup>3</sup>,
+              <a href="https://scholar.google.com/citations?user=tyQm5IkAAAAJ&hl=zh-CN&oi=ao" target="_blank">Jie Mei</a><sup>2</sup>,
+              <a href="http://sysu-star.com/people/" target="_blank">Boyu Zhou</a><sup>1,†</sup>
+            </h6>
+          <p>
+            <h7 style="line-height: 2px;">
+              <sup>1</sup> Sun Yat-Sen University. &nbsp;&nbsp;
+              <sup>2</sup> Harbin Institute of Technology, Shenzhen. &nbsp;&nbsp;
+              <sup>3</sup> Zhejiang University. &nbsp;&nbsp;
+              <br>
+            </h7>
+              <sup>*</sup>Equal Contribution &nbsp;&nbsp;
+              <sup>†</sup>Corresponding Authors
+          </p>
 
-  <!-- 安装Bulma框架 -->
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <!-- 自定义样式 -->
-  <link rel="stylesheet" href="./static/css/index.css">
-  <!-- Icon库 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-</head>
-
-<!--  web body  -->
-
-<body>
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-4 publication-title">Real-time Whole-body Motion Planning for Mobile Manipulators Using 
-              Environment-adaptive Search and Spatial-temporal Optimization</h1>
-            <div class="is-size-8 publication-authors">
-              <!-- 作者连接缺失状态 -->
-              <span class="author-block">
-                <a rel="license" href="http://ck1201.github.io/" target="blank"> 
-                  Chengkai Wu</a><sup>1,2,*</sup>,</span>
-              <span class="author-block">
-                <a rel="license" href="http://sysu-star.com/people/" target="blank">
-                  Ruilin Wang</a><sup>1,*</sup>,</span>
-              <span class="author-block">
-                <a rel="license" href="http://sysu-star.com/people/" target="blank">
-                  Mianzhi Song</a><sup>1</sup>,</span>
-              </span>
-              <span class="author-block">
-                <a rel="license" href="http://zju-fast.com/fei-gao/" target="blank">
-                  Fei Gao</a><sup>3</sup>,</span>
-              </span>
-              <span class="author-block">
-                <a rel="license" href="http://faculty.hitsz.edu.cn/meijie" target="blank">
-                  Jie Mei</a><sup>2</sup>,</span>
-              </span>
-              <span class="author-block">
-                <a rel="license" href="https://boyuzhou.net/" target="blank">
-                  Boyu Zhou</a><sup>1</sup>
-              </span>
+          <div class="row justify-content-center">
+            <!-- <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="" role="button"  target="_blank">
+                  <i class="fa fa-file"></i> Paper</a> </p>
+            </div> -->
+            <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/SYSU-STAR/REMANI-Planner" role="button"  target="_blank">
+                  <i class="fa fa-github-alt"></i> Code </a> </p>
             </div>
-            <div class="is-size-8 publication-authors">
-              <span class="author-block"><sup>1</sup> Sun Yat-sen University,</span>
-              <span class="author-block"><sup>2</sup> Harbin Institute of Technology Shenzhen,</span>
-              <span class="author-block"><sup>3</sup> Zhejiang University,</span>
-              <span class="author-block"><sup>*</sup> Equal contribution</span>
-            </div>
-
-            <!-- end author -->
-            <!-- Button -->
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- PDF Link. -->
-                <!-- <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span> -->
-                <!-- arxiv Link.  -->
-                <!-- <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span> -->
-                <!-- video Link.  -->
-                <span class="link-block">
-                  <a href="https://www.bilibili.com/video/BV1Wz4y1V7vL/?spm_id_from=333.999.0.0&vd_source=e952281dd3b0d8a255e509b8015cd781"
-                    target="blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                    </span>
-                    <span>Video</span>
-                  </a>
-                </span>
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a href="https://github.com/SYSU-STAR/MOVE-Planner"
-                    target="blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (coming soon)</span>
-                  </a>
-                </span>
-              </div>
-            </div>
-            <!-- end Button -->
+            <div class="column">
+              <p class="mb-5"><a class="btn btn-large btn-light" href="https://www.youtube.com/watch?v=iYdAEZ3z11s&t=8s" role="button"  target="_blank">
+                <i class="fa fa-video-camera"></i> Video </a> </p>
+          </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- top figure -->
-  <section class="top figure">
+
+  <!-- abstract -->
+  <section>
     <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-">
-          <div class="content">
-            <figure class="image">
-              <img src="static/images/top.png" alt="">
-            </figure>
+        <div class="warp-container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h4>Abstract</h4>
+                <hr style="margin-top:0px">
+                <h6 style="color:#8899a5" class="text-left"> 
+                  We propose REMANI-Planner: a motion planning method capable of generating high-quality, safe, agile and feasible trajectories for mobile manipulators in real time.
+                </h6>
+                  <!-- <img src="https://raw.githubusercontent.com/SYSU-STAR/REMANI-Planner/gh_page/assets/imgs/head.png" alt="Overview" width="70%"> -->
+                  <img src="./static/assets/imgs/head.png" alt="Overview" width="70%">
+                  <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                      <source src="video/teaser.mp4" type="video/mp4">
+                  </video> -->
+                  <br>
+                  <br>
+              <p class="text-left">
+                <strong>
+                  Mobile manipulators have recently gained significant attention in the robotics community due to their superior potential in industrial and service applications. 
+                  However, the high degree of freedom associated with mobile manipulators poses challenges in achieving real-time whole-body motion planning. 
+                  To bridge the gap, this paper presents a motion planning method capable of generating high-quality, safe, agile and feasible trajectories for mobile manipulators in real time. 
+                  First, we present a novel environment-adaptive path searching method, which can generate paths in real-time in various environments by adaptively adjusting searching dimension based on environment complexity. 
+                  Additionally, we propose a real-time spatial-temporal trajectory optimization method that takes into account the whole-body safety, agility and dynamic feasibility of mobile manipulators. 
+                  Moreover, task constraints are applied to ensure that the trajectory can fulfill specific task requirements. Simulation and real-world experiments demonstrate that our method is capable of generating whole-body trajectories in real-time in challenging environments.
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- <br> -->
+
+
+
+<!-- toolChain example -->
+<section>
+  <div class="container">
+      <div class="warp-container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h4>System Overview</h4>
+              <hr style="margin-top:0px">
+              <!-- <h6 style="color:#8899a5" class="text-left"> 
+                TGS enables fast reconstruction from single-view image. It builds the 3D representation upon a hybrid Triplane-Gaussian representation by evaluating a transformer-based framework, from which 3D Gaussians would be decoded.
+              </h6> -->
+              
+              <!-- <h5  class="text-center"> 
+                A. 3D Scene Segmentation
+              </h5> -->
+              <!-- <img src="https://raw.githubusercontent.com/SYSU-STAR/REMANI-Planner/gh_page/assets/imgs/system_overview.png" alt="Overview" width="75%"> -->
+              <img src="./static/assets/imgs/system_overview.png" alt="Overview" width="75%">
+              <br><br>
+              <p class="text-left">
+                The overview of the proposed real-time whole-body motion planning framework for mobile manipulators.
+                Firstly, we determine a path for the mobile manipulator by utilizing environment-adaptive path searching.
+                By using the path as an initial guess, we construct a spatial-temporal trajectory optimization problem considering certain constraints to obtain a safe and feasible trajectory, which enables the mobile manipulator to complete specific tasks. 
+              </p>
+              <!-- <br> -->
+
+              <!-- <h5  class="text-center"> 
+                B. Images Rendering
+              </h5>
+              <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/render.jpg" alt="Overview" width="75%">
+              <br><br>
+              <p class="text-center">
+                An example of the image rendering part of the toolchain. We offer the random mode (left) and trajectory mode (right) for users.
+              </p> -->
+
+              <!-- <h5  class="text-center"> 
+                C. Descriptive Texts Generation
+              </h5>
+              <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/text_new.jpg" alt="Overview" width="75%">
+              <br><br>
+              <p class="text-center">
+                An example of the descriptive text rendering part of the toolchain. BLIP is employed to perform zero-shot image-to-text generation.
+              </p> -->
+
+              <!-- <h5  class="text-center"> 
+                D. Partial Point Clouds Generation
+              </h5>
+              <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/partial_gif.gif" alt="Overview" width="85%">
+              <br>
+              <p class="text-center">
+                An example of the partial point cloud render part of the toolchain.
+              </p> -->
+              <!-- <br> -->
+                <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                    <source src="video/teaser.mp4" type="video/mp4">
+                </video> -->
+
+            <!-- <p class="text-left">
+              &nbsp;&nbsp; We use an advanced AI model segment anything mobile(SAM)  that has shown excellent performance in segmenting complex and diverse images with the ability to perform panoramic segmentation. The front end applies it to segment the bird-eye view image of the 3D scene. The back end uses the Blender Python to segment the 3D scene according to the boundary returned by the front end.
+              <br>
+              &nbsp;&nbsp; In the automatic segmentation method, since SAM does not have the semantic information of the scene, we will inevitably encounter some non-architectural structures (such as roads, trees, etc.). In consideration of improving the segmentation quality, we use contrastive language-image pre-training model(CLIP) to remove these non-architectural structures. CLIP is a multi-modal pre-training model. It uses more detailed image text descriptions, which can help vision encoder learn better visual features with stronger generalization capabilities. We first use SAMto segment all the scenes and use CLIP to judge whether it belongs to the building through the image rendered by the scene, to filter out the non-architectural structures.
+              <br>
+              &nbsp;&nbsp; In the manual segmentation method, users have the option to select the desired area either by using a rectangle tool in the bird-eye view or by clicking on the segmented area identified by SAM. This enables them to directly access the corresponding detailed 3D scene.
+            </p> -->
+
           </div>
         </div>
       </div>
+  </div>
+</section>
+<!-- <br> -->
+
+<!-- Method -->
+
+<!-- <br> -->
+
+
+  <br>
+
+  <section>
+    <div class="container">
+        <div class="warp-container">
+          <div class="row">
+            <div class="col-12 text-center">
+                <h4>Experiments</h4>
+                <hr style="margin-top:0px">
+                <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                    <source src="video/gso_comparison.mp4" type="video/mp4">
+                </video> -->
+                <h6 style="color:#8899a5" class="text-left"> 
+                  We conduct real-world experiments in a 7m×5m craft room with tables, shelves and some square obstacles.
+                </h6>
+                <!-- <br>
+                <p class="text-center">
+                   result 
+                </p> -->
+                <!-- <video loop="loop" controls="controls">
+                  <source src="./static/assets/imgs/exp7-5backward.mp4" type="video/mp4"></source></video> -->
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <video controls="" autoplay="" loop="" muted="" playsinline="" src="./static/assets/imgs/exp7-5backward.mp4" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" width="40%"></video>
+                  </div>
+                <!-- <source src="./static/assets/imgs/exp7-5backward.mp4" type="video/mp4" width="99%"> -->
+
+                <br>
+                <!-- <div style="display: flex;">
+                  <div style="display: flex; flex-direction: column;flex-direction: column;
+                  justify-content: space-between;">
+                    <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/infer_time.png" alt="ablation-representation" width="90%">
+                    <h8 class="text-center">
+                      Time Efficiency and Resource Consumption of Each Method 
+                    </h8>
+                  </div>
+                  <div style="display: flex; flex-direction: column;flex-direction: column;
+                  justify-content: space-between;">
+                    <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/eval.png" alt="ablation-representation" width="90%">
+                    <h7 class="text-center">
+                      The Quality of Prediction Result of Each Method 
+                    </h7>
+                  </div>
+                </div> -->
+                <!-- <img src="https://raw.githubusercontent.com/SYSU-STAR/MASSTAR/gh_page/assets/imgs/table.png" alt="ablation-representation" width="100%">
+                <p class="text-center">
+                 the ouput .
+                </p>
+                <br> -->
+            </div>
+        </div>
+        </div>
     </div>
   </section>
+  <br>
 
-  <!-- endfooter -->
+  <style>
+    /* 自定义样式 */
+    .video-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    .video-container video {
+      max-width: 100%;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      margin: 1.0%;
+    }
+  </style>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2 text-center">More Experiments</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="embed-responsive" style="padding-bottom: 75%;">
+          <video controls="" autoplay="" loop="" muted="" playsinline="" src="./static/assets/imgs/exp1.mp4" poster="" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="embed-responsive" style="padding-bottom: 75%;">
+          <video controls="" autoplay="" loop="" muted="" playsinline="" src="./static/assets/imgs/exp2.mp4" poster="" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="embed-responsive" style="padding-bottom: 75%;">
+          <video controls="" autoplay="" loop="" muted="" playsinline="" src="./static/assets/imgs/exp3.mp4" poster="" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="embed-responsive" style="padding-bottom: 75%;">
+          <video controls="" autoplay="" loop="" muted="" playsinline="" src="./static/assets/imgs/exp4.mp4" poster="" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+
+<section>
+  <div class="container">
+      <div class="warp-container">
+        <div class="row">
+          <div class="col-12 text-center">
+              <h4>Benchmark</h4>
+              <hr style="margin-top:0px">
+              <!-- <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="video/gso_comparison.mp4" type="video/mp4">
+              </video> -->
+              <h6 style="color:#8899a5" class="text-center"> 
+                Compared with RRT-Connect
+              </h6>
+              <img src="./static/assets/imgs/rrt.png" alt="ablation-representation" width="100%">
+              <br>
+              <br>
+
+              <h6 style="color:#8899a5" class="text-center"> 
+                Compared with CHOMP
+              </h6>
+              <img src="./static/assets/imgs/chomp.gif" alt="ablation-representation" width="100%">
+          </div>
+      </div>
+      </div>
+  </div>
+</section>
+
+  <!-- citing -->
+  <div class="container">
+    <div class="warp-container">
+    <div class="row">
+      <div class="col-12">
+          <h3>BibTeX</h3>
+          <hr style="margin-top:0px">
+            <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code>@article{
+    title={Real-time Whole-body Motion Planning for Mobile Manipulators Using Environment-adaptive Search and Spatial-temporal Optimization},
+    author={Chengkai Wu, Ruilin Wang, Mianzhi Song, Fei Gao, Jie Mei, Boyu Zhou},
+    booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)},
+    year={2024},
+    organization={IEEE}
+  }
+</code>
+            </pre>
+          <hr>
+      </div>
+    </div>
+  </div>
+  
   <footer class="footer">
     <div class="container">
       <!-- contact -->
@@ -144,7 +340,7 @@
             </p>
             <p>
               <a rel="license" href="http://sysu-star.com/" target="blank">
-                <img src="static/images/starlab.png" style="width: 200px;" alt="">
+                <img src="./static/assets/imgs/starlab.png" style="width: 200px;" alt="">
               </a>
             </p>
             <p>
@@ -168,7 +364,5 @@
     </div>
   </footer>
   <!--/ endfooter -->
-
 </body>
-
 </html>
