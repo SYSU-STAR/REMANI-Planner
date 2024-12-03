@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="FastArmer">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-7.95585650901209E-05 -0.000462722401799009 0.0681453386578888"
+        rpy="0 0 0" />
+      <mass
+        value="0.23763492660524" />
+      <inertia
+        ixx="0.000152486129579449"
+        ixy="-1.24954243239131E-07"
+        ixz="-3.47152305512023E-08"
+        iyy="0.000162066033231765"
+        iyz="1.59940105977221E-06"
+        izz="0.000227896620770121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-2.50218681052683E-07 -0.00305164206962188 -0.036242986713688"
+        rpy="0 0 0" />
+      <mass
+        value="0.121039875923321" />
+      <inertia
+        ixx="0.000134357938922348"
+        ixy="-4.35945002280025E-11"
+        ixz="-7.66548516576531E-09"
+        iyy="6.99882650494688E-05"
+        iyz="-2.15666748742684E-05"
+        izz="0.000138275187702787" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="continuous">
+    <origin
+      xyz="0 0 0.176"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.0473450599629209 -4.58388010393662E-06 -0.00292384400918178"
+        rpy="0 0 0" />
+      <mass
+        value="0.591012880164826" />
+      <inertia
+        ixx="0.000276034377116555"
+        ixy="9.9205575777915E-07"
+        ixz="-3.11989996323451E-06"
+        iyy="0.000686219679670127"
+        iyz="-1.99672828293364E-07"
+        izz="0.000777900346197567" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.0464356396608939 0.00083885285986629 -0.00610992373086672"
+        rpy="0 0 0" />
+      <mass
+        value="0.0496773274709177" />
+      <inertia
+        ixx="3.09355074520831E-05"
+        ixy="1.56310000748367E-06"
+        ixz="-1.33396990476364E-06"
+        iyy="5.86646750938163E-05"
+        iyz="2.07607432453718E-06"
+        izz="4.71032700970431E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="continuous">
+    <origin
+      xyz="0.417 0 0"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="7.47834705313588E-05 0.0032171546397371 -0.263466713373761"
+        rpy="0 0 0" />
+      <mass
+        value="0.190315442175958" />
+      <inertia
+        ixx="0.000391647905958664"
+        ixy="-9.60268291735708E-08"
+        ixz="3.6952799358203E-07"
+        iyy="0.000418313788817878"
+        iyz="2.0311198390171E-06"
+        izz="7.98166047733909E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="continuous">
+    <origin
+      xyz="0.0650000000000004 -0.385 0"
+      rpy="-1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="6.42546968387392E-05 0.0121471263639341 -0.000321593374336848"
+        rpy="0 0 0" />
+      <mass
+        value="0.00925241540380718" />
+      <inertia
+        ixx="2.22491474069906E-06"
+        ixy="7.85112302933983E-09"
+        ixz="4.03626938375769E-12"
+        iyy="1.37577908413616E-06"
+        iyz="5.21062802463209E-08"
+        izz="2.26981978105116E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="-2.22180659864013E-05 0.000999999558207953 0.0444036285920498"
+        rpy="0 0 0" />
+      <mass
+        value="0.0571437561739702" />
+      <inertia
+        ixx="1.14880247629272E-05"
+        ixy="-4.82691850960158E-13"
+        ixz="-7.92107505632982E-09"
+        iyy="1.15174589279948E-05"
+        iyz="-9.69498236146727E-14"
+        izz="2.18358876423069E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.309803921568627 0.309803921568627 0.309803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FastArmer/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

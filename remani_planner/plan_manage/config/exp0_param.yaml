@@ -1,0 +1,16 @@
+map:
+  map_type: 0 # 0: Cuboids 1: Bridge
+
+fsm:
+  waypoint_num : 2
+  # [x, y, theta1, theta2, theta3, theta4, theta5, theta6]
+  # ###################################### map type 0 forest ######################################
+  init_state             : [-3.0, 0.0, 0.0, -70.0, 110.0, 0.0, -110.0, 0.0]
+  init_yaw               : 0.0
+  init_gripper_close     : false
+  waypoint0              : [3.0, 1.5, 0.0, -70.0, 110.0, 0.0, -110.0, 0.0]
+  waypoint0_yaw          : -45.0
+  waypoint0_gripper_close: true
+  waypoint1              : [-0.5, -3.0, 0.0, -70.0, 110.0, 0.0, -110.0, 0.0]
+  waypoint1_yaw          : -90.0
+  waypoint1_gripper_close: false

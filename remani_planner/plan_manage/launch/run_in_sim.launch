@@ -1,0 +1,81 @@
+  <launch>
+    <arg name="map_size_x" value="20.0"/>
+    <arg name="map_size_y" value="8.0"/>
+    <arg name="map_size_z" value=" 3.0"/>
+
+    <arg name="odom_topic" value="/mm/car/odom" />
+    <arg name="joint_state_topic" value="/mm/mani/joint_state" />
+    <arg name="joint_cmd_topic" value="/mm_controller_node/joint_cmd" />
+    <arg name="gripper_cmd_topic" value="/mm_controller_node/gripper_cmd"/>
+    <arg name="gripper_state_topic" value="/mm/mani/gripper_state"/>
+    <arg name="map_resolution" value="0.05" />
+
+    <arg name="generate_map_size_x" default="8"/>
+    <arg name="generate_map_size_y" default="8"/>
+    <arg name="generate_map_size_z" default="3"/>
+    <arg name="exp_param_file" default="$(find remani_planner)/config/remani_planner_exp0.yaml"/>
+
+    <!-- main algorithm params -->
+    <include file="$(find remani_planner)/launch/advanced_param_sim.xml">
+      <arg name="map_size_x_"             value="$(arg map_size_x)"/>
+      <arg name="map_size_y_"             value="$(arg map_size_y)"/>
+      <arg name="map_size_z_"             value="$(arg map_size_z)"/>
+      <arg name="exp_param_file"          value="$(arg exp_param_file)"/>
+      <!-- camera pose: transform of camera frame in the world frame -->
+      <!-- depth topic: depth image, 640x480 by default -->
+      <!-- don't set cloud_topic if you already set these ones! -->
+      <arg name="odometry_topic" value="$(arg odom_topic)"/>
+      <arg name="joint_state_topic" value="$(arg joint_state_topic)"/>
+      <arg name="joint_cmd_topic" value="$(arg joint_cmd_topic)"/>
+      <arg name="gripper_cmd_topic" value="$(arg gripper_cmd_topic)"/>
+      <arg name="gripper_state_topic" value="$(arg gripper_state_topic)"/>
+      <arg name="camera_pose_topic" value="pcl_render_node/camera_pose"/>
+      <arg name="depth_topic" value="pcl_render_node/depth"/>
+      <!-- topic of point cloud measurement, such as from LIDAR  -->
+      <!-- don't set camera pose and depth, if you already set this one! -->
+      <arg name="cloud_topic" value="pcl_render_node/cloud"/>
+      <!-- intrinsic params of the depth camera -->
+      <arg name="cx" value="321.04638671875"/>
+      <arg name="cy" value="243.44969177246094"/>
+      <arg name="fx" value="387.229248046875"/>
+      <arg name="fy" value="387.229248046875"/>
+    </include>
+
+    <!-- use simulator -->
+    <include file="$(find remani_planner)/launch/simulator.xml">
+      <arg name="map_size_x_" value="$(arg map_size_x)"/>
+      <arg name="map_size_y_" value="$(arg map_size_y)"/>
+      <arg name="map_size_z_" value="$(arg map_size_z)"/>
+      <arg name="exp_param_file" value="$(arg exp_param_file)"/>
+      <arg name="odometry_topic" value="$(arg odom_topic)" />
+      <arg name="joint_state_topic" value="$(arg joint_state_topic)" />
+      <arg name="joint_cmd_topic" value="$(arg joint_cmd_topic)" />
+      <arg name="gripper_cmd_topic" value="$(arg gripper_cmd_topic)"/>
+      <arg name="gripper_state_topic" value="$(arg gripper_state_topic)"/>
+      <arg name="map_resolution" value="$(arg map_resolution)" />
+    </include>
+
+    <!-- map -->
+    <node pkg ="map_generator" name ="map_generator" type ="map_generator" output = "screen">   
+        <rosparam file="$(find remani_planner)/config/mm_param.yaml"/>
+        <rosparam file="$(arg exp_param_file)"/>
+        <param name="map/x_size"     value="$(arg generate_map_size_x)" />
+        <param name="map/y_size"     value="$(arg generate_map_size_y)" />
+        <param name="map/z_size"     value="$(arg generate_map_size_z)" />
+        <param name="map/resolution" value="$(arg map_resolution)"/>    
+        <param name="map/seed"    value="30"/>
+        
+        <param name="map/obs_num"    value="20"/>
+        <param name="map/float_obs_num"    value="30"/>      
+
+        <param name="ObstacleShape/radius_l" value="0.3"/>
+        <param name="ObstacleShape/radius_h" value="0.5"/>        
+        <param name="ObstacleShape/z_l" value="0.9"/>
+        <param name="ObstacleShape/z_h" value="1.2"/>
+        <param name="ObstacleShape/theta" value="0.5"/>
+    
+        <param name="pub_rate"   value="1.0"/>  
+        <param name="min_distance" value="1.2 "/>         
+    </node>
+
+  </launch>

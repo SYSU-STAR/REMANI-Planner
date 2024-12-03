@@ -1,0 +1,109 @@
+<launch>
+	<arg name="map_size_x_"/>
+	<arg name="map_size_y_"/>
+	<arg name="map_size_z_"/>
+
+	<arg name="odometry_topic"/>
+	<arg name="joint_state_topic"/>
+	<arg name="gripper_state_topic"/>
+	<arg name="joint_cmd_topic"/>
+	<arg name="gripper_cmd_topic"/>
+	<arg name="camera_pose_topic"/>
+	<arg name="depth_topic"/>
+	<arg name="cloud_topic"/>
+	<arg name="exp_param_file"/>
+
+	<arg name="cx"/>
+	<arg name="cy"/>
+	<arg name="fx"/>
+	<arg name="fy"/>
+  
+  <!-- main node -->
+  	<node pkg="remani_planner" name="remani_planner_node" type="remani_planner_node" output="screen">
+		<rosparam file="$(arg exp_param_file)"/>
+		<rosparam file="$(find remani_planner)/config/mm_param.yaml"/>
+		<rosparam file="$(find remani_planner)/config/remani_planner_param.yaml"/>
+
+		<remap from="~gripper_cmd" to="$(arg gripper_cmd_topic)"/>
+		<remap from="~gripper_state" to="$(arg gripper_state_topic)"/>
+  
+		<remap from="~odom_world" to="$(arg odometry_topic)"/>
+		<remap from="~joint_state" to="$(arg joint_state_topic)"/>
+		<remap from="~planning/trajectory" to = "planning/trajectory"/>
+		<remap from="~planning/start" to = "planning/start"/>
+		<remap from="~planning/finish" to = "planning/finish"/>
+		<remap from="~planning/data_display" to = "planning/data_display"/>
+
+		<remap from="~grid_map/odom"  to="$(arg odometry_topic)"/>
+		<remap from="~grid_map/cloud" to="$(arg cloud_topic)"/>
+		<remap from="~grid_map/pose"  to = "$(arg camera_pose_topic)"/> 
+		<remap from="~grid_map/depth" to = "$(arg depth_topic)"/>
+		
+		<!-- planning fsm -->
+		<param name="fsm/thresh_no_replan_meter"  value="2.5" type="double"/>
+		<param name="fsm/fail_safe"               value="true"/>
+		
+		<param name="grid_map/resolution"             value="0.05" /> 
+		<param name="grid_map/map_size_x"             value="$(arg map_size_x_)" /> 
+		<param name="grid_map/map_size_y"             value="$(arg map_size_y_)" /> 
+		<param name="grid_map/map_size_z"             value="$(arg map_size_z_)" /> 
+		<param name="grid_map/local_update_range_x"   value="17" /> 
+		<param name="grid_map/local_update_range_y"   value="17" /> 
+		<param name="grid_map/local_update_range_z"   value="3.0" /> 
+		<param name="grid_map/obstacles_inflation"    value="0.00" /> 
+		<param name="grid_map/local_map_margin"       value="15"/>
+		<param name="grid_map/ground_height"          value="-0.01"/>
+		<param name="grid_map/z_length"               value="0.0"/>
+		<!-- camera parameter -->
+		<param name="grid_map/cx" value="$(arg cx)"/>
+		<param name="grid_map/cy" value="$(arg cy)"/>
+		<param name="grid_map/fx" value="$(arg fx)"/>
+		<param name="grid_map/fy" value="$(arg fy)"/>
+		<!-- depth filter -->
+		<param name="grid_map/use_depth_filter"       value="true"/>
+		<param name="grid_map/depth_filter_tolerance" value="0.15"/>
+		<param name="grid_map/depth_filter_maxdist"   value="5.0"/>
+		<param name="grid_map/depth_filter_mindist"   value="0.2"/>
+		<param name="grid_map/depth_filter_margin"    value="2"/>
+		<param name="grid_map/k_depth_scaling_factor" value="1000.0"/>
+		<param name="grid_map/skip_pixel"             value="2"/>
+		<!-- local fusion -->
+		<param name="grid_map/p_hit"  value="0.65"/>
+		<param name="grid_map/p_miss" value="0.35"/>
+		<param name="grid_map/p_min"  value="0.12"/>
+		<param name="grid_map/p_max"  value="0.90"/>
+		<param name="grid_map/p_occ"  value="0.80"/>
+		<param name="grid_map/min_ray_length" value="0.1"/>
+		<param name="grid_map/max_ray_length" value="4.5"/>
+	
+		<param name="grid_map/virtual_ceil_height"              value="4.0"/>
+		<param name="grid_map/visualization_truncate_height"    value="2.8"/>
+		<param name="grid_map/show_occ_time"                    value="false"/>
+		<param name="grid_map/pose_type"                        value="1"/>  
+		<param name="grid_map/frame_id"                         value="world"/>
+
+		<!-- sdf map -->
+		<param name="grid_map/local_bound_inflate"              value="0.0"/>
+		<param name="grid_map/show_esdf_time"                   value="false"/>
+		<param name="grid_map/esdf_slice_height"                value="-0.1"/>
+
+		<!-- planner manager -->
+		<param name="manager/control_points_distance"           value="0.4" type="double"/>
+		<param name="manager/polyTraj_piece_length"             value="2.0" type="double"/>
+		<param name="manager/feasibility_tolerance"             value="0.05" type="double"/>
+  	</node>
+
+	<node pkg="mm_controller" name="mm_controller_node" type="mm_controller_node" output="screen">
+		<rosparam file="$(arg exp_param_file)"/>
+		<rosparam file="$(find remani_planner)/config/mm_param.yaml"/>
+		<rosparam file="$(find remani_planner)/config/remani_planner_param.yaml"/>
+  
+		<remap from="~odom" to="$(arg odometry_topic)"/>
+		<remap from="~joint_states" to="$(arg joint_state_topic)"/>
+		<remap from="~joint_cmd" to="$(arg joint_cmd_topic)"/>
+		<remap from="~planning/trajectory" to = "planning/trajectory"/>
+		<remap from="~planning/start" to = "planning/start"/>
+		<remap from="~planning/finish" to = "planning/finish"/>
+  	</node>
+
+</launch>

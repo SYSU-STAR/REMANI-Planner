@@ -1,0 +1,10 @@
+  <launch>
+    <arg name="exp_param_file" value="$(find remani_planner)/config/exp1_param.yaml"/>
+
+    <include file="$(find remani_planner)/launch/run_in_sim.launch">
+      <arg name="exp_param_file" value="$(arg exp_param_file)"/>
+    </include>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find remani_planner)/launch/exp1.rviz" required="true" />
+
+  </launch>

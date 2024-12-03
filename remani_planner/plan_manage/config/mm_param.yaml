@@ -1,0 +1,31 @@
+mm:
+  mobile_base_dof            : 2    # degree of freedom of the mobile base
+  mobile_base_length         : 0.5  # length of the mobile base
+  mobile_base_width          : 0.5  # width of the mobile base
+  mobile_base_height         : 0.23 # height of the mobile base
+  mobile_base_wheel_base     : 0.37 # please modify the value of ${mobile_base_wheel_base} in poly_traj_utils.hpp if you change this value
+  mobile_base_wheel_radius   : 0.07 # please modify the value of ${mobile_base_wheel_radius} in poly_traj_utils.hpp if you change this value
+  mobile_base_non_singul_vel : 0.05 # minimum linear velocity to avoid singularity
+  mobile_base_max_wheel_omega: 10.0 # maximum rotation speed of the wheel
+  mobile_base_max_wheel_alpha: 20.0 # maximum rotation acceleration of the wheel
+  mobile_base_check_radius   : 0.17 # radius of the circle used to check the collision of the mobile base
+
+  manipulator_dof    : 6    # degree of freedom of the manipulator
+  manipulator_max_vel: 1.57 # maximum velocity of the manipulator
+  manipulator_max_acc: 3.14 # maximum acceleration of the manipulator
+
+  base_mani_fixed_joint_xyz_ypr: [0.0, 0.0, 0.0, 0.03, -0.02, 0.23] # the position and orientation of the manipulator relative to the base
+
+  # param for FastArmer
+  use_fast_armer       : true # whether to use FastArmer or UR5
+  manipulator_thickness: 0.03 # radius of the circle used to check the collision of the manipulator for FastArmer
+  manipulator_config   : [0.176,   0.417,  0.07,   0.385,  0.0,    0.20] # parameters for DH table for FastArmer
+  manipulator_min_pos  : [-3.062, -3.136, -0.008, -2.932, -3.655, -3.14] # minimum joint position for FastArmer
+  manipulator_max_pos  : [ 3.052,  0.001,  3.044,  2.950,  0.447,  3.14] # maximum joint position for FastArmer
+
+  # param for UR5
+  # use_fast_armer       : false # whether to use FastArmer or UR5
+  # manipulator_thickness: 0.044 # radius of the circle used to check the collision of the manipulator for UR5
+  # manipulator_config   : [0.163,  0.425, 0.392, 0.127, 0.1,   0.1] # parameters for DH table for UR5
+  # manipulator_min_pos  : [-3.14, -3.14, -3.14, -3.14, -3.14, -3.14] # minimum joint position for UR5
+  # manipulator_max_pos  : [ 3.14,  3.14,  3.14,  3.14,  3.14,  3.14] # maximum joint position for UR5

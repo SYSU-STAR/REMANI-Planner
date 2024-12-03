@@ -1,0 +1,33 @@
+<launch>
+	<arg name="map_size_x_"/>
+	<arg name="map_size_y_"/>
+	<arg name="map_size_z_"/>
+	<arg name="odometry_topic"/>
+  <arg name="joint_state_topic"/>
+  <arg name="joint_cmd_topic"/>
+  <arg name="gripper_state_topic"/>
+  <arg name="gripper_cmd_topic"/>
+  <arg name="map_resolution"/>
+  <arg name="exp_param_file"/>
+
+  <node pkg="fake_mm" name="fake_mm" type="fake_mm" output="screen">
+    <rosparam file="$(arg exp_param_file)"/>
+    <rosparam file="$(find remani_planner)/config/mm_param.yaml"/>
+    <remap from="~command" to="planning/pos_cmd"/>
+    <remap from="~odometry" to="$(arg odometry_topic)"/>
+    <remap from="~joint_cmd" to="$(arg joint_cmd_topic)"/>
+    <remap from="~joint_state" to="$(arg joint_state_topic)"/>
+    <remap from="~gripper_state" to="$(arg gripper_state_topic)"/>
+    <remap from="~gripper_cmd" to="$(arg gripper_cmd_topic)"/>
+  </node>
+
+  <node pkg="fake_mm" name="model_vis" type="model_vis" output="screen">
+    <rosparam file="$(find remani_planner)/config/mm_param.yaml"/>
+    <remap from="~command" to="planning/pos_cmd"/>
+    <remap from="~odometry" to="$(arg odometry_topic)"/>
+    <remap from="~joint_cmd" to="$(arg joint_cmd_topic)"/>
+    <remap from="~joint_state" to="$(arg joint_state_topic)"/>
+    <remap from="~gripper_state" to="$(arg gripper_state_topic)"/>
+  </node>
+
+</launch>
