@@ -31,7 +31,7 @@ namespace remani_planner
     {
       cp_size = size_set;
 
-      points.resize(3, size_set);
+      points.resize(8, size_set);
     }
 
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
