@@ -994,6 +994,10 @@ void GridMap::cloudCallback(const sensor_msgs::PointCloud2ConstPtr &img)
   posToIndex(Eigen::Vector3d(max_x, max_y, max_z), md_.local_bound_max_);
   posToIndex(Eigen::Vector3d(min_x, min_y, min_z), md_.local_bound_min_);
 
+  // NOTE update the whole map
+  md_.local_bound_min_ << 0, 0, 0;
+  md_.local_bound_max_ << mp_.map_voxel_num_(0), mp_.map_voxel_num_(1), mp_.map_voxel_num_(2);
+
   boundIndex(md_.local_bound_min_);
   boundIndex(md_.local_bound_max_);
 
