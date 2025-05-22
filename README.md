@@ -14,9 +14,9 @@ REMANI-Planner presents a motion planning method capable of generating high-qual
 
 ![system_overview](./attachment/system_overview.png)
 
-**Authors**: [Chengkai Wu](https://chengkaiwu.me/)\*, [Ruilin Wang](https://github.com/Ruilin-W)\*, [Mianzhi Song](http://sysu-star.com/), [Fei Gao](http://zju-fast.com/fei-gao/), [Jie Mei](https://scholar.google.com/citations?user=tyQm5IkAAAAJ&hl=zh-CN) and [Boyu Zhou](http://sysu-star.com/)$^{\dagger}$.
+**Authors**: [Chengkai Wu](https://chengkaiwu.me/)\*, [Ruilin Wang](https://github.com/Ruilin-W)\*, [Mianzhi Song](https://robotics-star.com/), [Fei Gao](http://zju-fast.com/fei-gao/), [Jie Mei](https://scholar.google.com/citations?user=tyQm5IkAAAAJ&hl=zh-CN) and [Boyu Zhou](https://robotics-star.com/)$^{\dagger}$.
 
-**Institutions**: [SYSU STAR Group](http://sysu-star.com/), [HITSZ MAS Lab](https://hitsz-mas.github.io/mas-lab-website/) and [ZJU FAST Lab](http://zju-fast.com/).
+**Institutions**: [STAR Group](https://robotics-star.com/), [HITSZ MAS Lab](https://hitsz-mas.github.io/mas-lab-website/) and [ZJU FAST Lab](http://zju-fast.com/).
 
 **Video**: [YouTube](https://www.youtube.com/watch?v=iYdAEZ3z11s), [Bilibili](https://www.bilibili.com/video/BV1Wz4y1V7vL).
 
@@ -123,4 +123,4 @@ The source code is released under the [GPLv3](https://www.gnu.org/licenses/) lic
 
 ## Maintenance
 
-For any technical issues, please contact Chengkai Wu([chengkai.wu99@gmail.com](mailto:chengkai.wu99@gmail.com)) or Ruilin Wang(Ruilinin@outlook.com).
+For any technical issues, please contact Chengkai Wu([chengkaiwuu@gmail.com](mailto:chengkaiwuu@gmail.com)) or Ruilin Wang(Ruilinin@outlook.com).
